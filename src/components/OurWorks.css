@@ -1,0 +1,25 @@
+.our-works {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .our-works h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .our-works .work-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .our-works .work-gallery img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
