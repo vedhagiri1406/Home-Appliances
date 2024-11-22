@@ -1,22 +1,71 @@
 .services {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .services h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .services ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .services ul li {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    color: #333;
-  }
-  
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.services-title {
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.services-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: red;
+  margin: 1rem auto 0;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.service-item:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.service-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.service-item p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}

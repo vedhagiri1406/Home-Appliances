@@ -1,10 +1,96 @@
 .footer {
-    background-color: #000;
-    color: #fff;
+  background-color: #fff;
+  color: #000;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #ccc;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+.footer-left h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.footer-left p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.footer-nav {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-nav ul li {
+  display: inline;
+}
+
+.footer-nav ul li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+  color: red; /* Highlight color on hover */
+}
+
+.footer-right {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: red; /* Change color on hover */
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
     text-align: center;
-    padding: 1rem 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
   }
-  
+
+  .footer-right {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .footer-nav {
+    margin-top: 1rem;
+  }
+}

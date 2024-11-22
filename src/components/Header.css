@@ -1,29 +1,84 @@
+/* Header Styles */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000;
-    color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+.header.scrolled {
+  background-color: white; /* Solid color when scrolled */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow on scroll */
+}
+
+.header:not(.scrolled) {
+  background-color: transparent; /* Transparent header */
+}
+
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.header:not(.scrolled) .logo {
+  color: #fff; /* White logo when header is transparent */
+}
+
+.header.scrolled .logo {
+  color: #000; /* Black logo when header is white */
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1.5rem; /* Add consistent spacing between nav items */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.header nav ul li {
+  flex: 1; /* Adjust spacing dynamically */
+  text-align: center; /* Center text */
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.header:not(.scrolled) nav ul li a {
+  color: #fff; /* White links when header is transparent */
+}
+
+.header.scrolled nav ul li a {
+  color: #000; /* Black links when header is white */
+}
+
+.header nav ul li a:hover {
+  color: #ff4500; /* Highlight color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
   }
-  
-  .header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
+
   .header nav ul {
-    display: flex;
-    list-style: none;
+    flex-direction: column; /* Stack items vertically */
+    gap: 0.5rem; /* Adjust spacing */
   }
-  
+
   .header nav ul li {
-    margin: 0 1rem;
+    flex: unset; /* Disable flex for vertical stacking */
   }
-  
-  .header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
+}

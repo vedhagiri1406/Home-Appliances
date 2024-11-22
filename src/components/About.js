@@ -1,12 +1,13 @@
 import React from "react";
 import "./About.css";
+import aboutImage from "../icons/3.jpg"; // Ensure the image is in the same directory or adjust the path accordingly
 
 function About() {
   return (
     <section id="about" className="about">
       <div className="about-container">
         <div className="about-image">
-          <img src="path-to-your-image.jpg" alt="About Us" />
+          <img src={aboutImage} alt="About Us" />
         </div>
         <div className="about-content">
           <h2>About Us</h2>

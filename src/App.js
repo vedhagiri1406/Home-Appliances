@@ -6,10 +6,13 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import OurWorks from "./components/OurWorks";
 import Footer from "./components/Footer";
+import FloatingIcons from "./components/FloatingIcons";
+import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div className="app">
+      <FloatingIcons/>
       <Header />
       <Home />
       <About />
