@@ -82,3 +82,32 @@
     flex: unset; /* Disable flex for vertical stacking */
   }
 }
+
+.logo img {
+  height: 50px; /* Adjust the size as needed */
+  width: auto;
+}
+
+
+/* Header.css */
+
+/* Styling for the clients section */
+.clients {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.clients h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.clients ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.clients li {
+  margin: 5px 0;
+}

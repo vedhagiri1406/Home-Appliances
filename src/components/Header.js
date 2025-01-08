@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+import root1 from "../icons/root.jpg"; // Ensure the image path is correct
+ 
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +24,10 @@ function Header() {
 
   return (
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
-      <div className="logo">ICK FABRICATORS</div>
+      {/* Replace the text with an image */}
+      <div className="logo">
+        <img src={root1} alt="ICK FABRICATORS" />
+      </div>
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>

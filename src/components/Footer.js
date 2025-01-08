@@ -1,13 +1,15 @@
 import React from "react";
 import "./Footer.css";
 import { FaFacebook, FaInstagram } from "react-icons/fa"; // Importing icons from react-icons
-
+import root1 from "../icons/root.jpg";
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-left">
-          <h3>TICK FABRICATORS</h3>
+          <div className="logo">
+            <img src={root1} alt="ICK FABRICATORS" />
+          </div>
           <p>© 2024 All Rights Reserved</p>
         </div>
         <div className="footer-nav">
