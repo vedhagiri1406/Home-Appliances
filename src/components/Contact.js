@@ -50,10 +50,9 @@ function Contact() {
           ></iframe>
         </div>
         <div className="contact-form">
-          <p>Email: tickfabricators100@gmail.com</p>
           <p>Contact Info:</p>
-          <p>+91-7299945100 - Manager</p>
-          <p>+91-7299945100 - Company</p>
+          <p>Email: tickfabricators100@gmail.com</p>
+          <p>Mobile No : +91 729994510</p>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input

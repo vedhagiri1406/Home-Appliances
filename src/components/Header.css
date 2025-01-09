@@ -1,4 +1,4 @@
-/* Header Styles */
+/* Header Container */
 .header {
   position: fixed;
   top: 0;
@@ -8,106 +8,104 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-.header.scrolled {
-  background-color: white; /* Solid color when scrolled */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow on scroll */
+/* Logo Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.header:not(.scrolled) {
-  background-color: transparent; /* Transparent header */
+.logo img {
+  height: 50px;
+  width: auto;
 }
 
-.header .logo {
+.logo-text {
+  font-family: "Poppins", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
+  color: #ff4500; /* Stylish Color */
+  letter-spacing: 1px;
+  text-transform: uppercase;
   transition: color 0.3s ease;
 }
 
-.header:not(.scrolled) .logo {
-  color: #fff; /* White logo when header is transparent */
+.logo-text:hover {
+  color: #333; /* Change color on hover */
 }
 
-.header.scrolled .logo {
-  color: #000; /* Black logo when header is white */
-}
-
-.header nav ul {
+/* Menu Icon Styling */
+.menu-icon {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-line {
+  width: 30px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-icon:hover .menu-line {
+  background-color: #ff4500; /* Highlight on hover */
+}
+
+/* Dropdown Menu Styling */
+.menu-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  min-width: 150px;
+  z-index: 1001;
+}
+
+.menu-dropdown ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1.5rem; /* Add consistent spacing between nav items */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
-.header nav ul li {
-  flex: 1; /* Adjust spacing dynamically */
-  text-align: center; /* Center text */
+.menu-dropdown ul li {
+  margin: 10px 0;
+  text-align: left;
 }
 
-.header nav ul li a {
+.menu-dropdown ul li a {
   text-decoration: none;
   font-weight: 600;
+  color: #333;
   transition: color 0.3s ease;
 }
 
-.header:not(.scrolled) nav ul li a {
-  color: #fff; /* White links when header is transparent */
-}
-
-.header.scrolled nav ul li a {
-  color: #000; /* Black links when header is white */
-}
-
-.header nav ul li a:hover {
-  color: #ff4500; /* Highlight color on hover */
+.menu-dropdown ul li a:hover {
+  color: #ff4500; /* Highlight on hover */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .header {
-    padding: 1rem;
+  .menu-icon {
+    margin-left: auto;
   }
 
-  .header nav ul {
-    flex-direction: column; /* Stack items vertically */
-    gap: 0.5rem; /* Adjust spacing */
+  .menu-dropdown {
+    min-width: 120px;
   }
 
-  .header nav ul li {
-    flex: unset; /* Disable flex for vertical stacking */
+  .menu-dropdown ul li {
+    font-size: 14px;
   }
-}
-
-.logo img {
-  height: 50px; /* Adjust the size as needed */
-  width: auto;
-}
-
-
-/* Header.css */
-
-/* Styling for the clients section */
-.clients {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #333;
-}
-
-.clients h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.clients ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.clients li {
-  margin: 5px 0;
 }
