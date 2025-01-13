@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import aboutImage from "../icons/3.jpg"; // Ensure the image is in the same directory or adjust the path accordingly
+import aboutImage from "../icons/21.jpg"; // Ensure the image is in the same directory or adjust the path accordingly
 
 function About() {
   return (

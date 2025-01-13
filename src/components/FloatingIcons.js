@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FloatingIcons.css";
-import { FaPhone, FaEnvelope, FaTimes } from "react-icons/fa";
+import { FaPhone, FaWhatsapp, FaTimes } from "react-icons/fa";
 import emailjs from "emailjs-com";
 
 function FloatingIcons() {
@@ -58,19 +58,25 @@ function FloatingIcons() {
       });
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "917299451000"; // Replace with your phone number (include country code)
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       {/* Floating Icons */}
       <div className="floating-icons">
-        <a href="tel:+1234567890" className="icon phone-icon" title="Call">
+        <a href="tel:+917299451000" className="icon phone-icon" title="Call">
           <FaPhone />
         </a>
         <div
-          className="icon email-icon"
-          title="Email"
-          onClick={handleEmailClick}
+          className="icon whatsapp-icon"
+          title="WhatsApp"
+          onClick={handleWhatsAppClick}
         >
-          <FaEnvelope />
+          <FaWhatsapp />
         </div>
       </div>
 

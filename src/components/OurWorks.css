@@ -27,10 +27,10 @@
 }
 
 .work-gallery {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  flex-wrap: wrap;
+  justify-items: center;
 }
 
 .work-item {
@@ -59,4 +59,21 @@
   font-size: 1rem;
   color: #333;
   margin: 0.5rem 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .work-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-item img {
+    height: 150px;
+  }
+  .work-item p {
+    font-size: 0.9rem;
+  }
 }

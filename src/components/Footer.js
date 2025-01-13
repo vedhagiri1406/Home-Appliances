@@ -28,15 +28,6 @@ function Footer() {
           >
             <FaInstagram />
           </a>
-          <a
-            href="https://wa.me/91729994510"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="icon"
-            aria-label="WhatsApp"
-          >
-            <FaWhatsapp />
-          </a>
         </div>
       </div>
     </footer>
