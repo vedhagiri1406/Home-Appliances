@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Contact.css";
+import emailjs from "emailjs-com";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,29 +10,44 @@ function Contact() {
     message: "",
   });
 
+  const [isSending, setIsSending] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Replace the endpoint with your email handling service or backend API
-    const response = await fetch("https://your-email-backend.com/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    setIsSending(true);
 
-    if (response.ok) {
-      alert("Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } else {
-      alert("Failed to send message. Please try again later.");
-    }
+    emailjs
+      .send(
+        "service_xsf8adr", // Replace with your EmailJS Service ID
+        "template_xvmmrtj", // Replace with your EmailJS Template ID
+        {
+          name: formData.name, // Maps to {{name}} in the template
+          email: formData.email, // Maps to {{email}} in the template
+          phone: formData.phone, // Maps to {{phone}} in the template
+          message: formData.message, // Maps to {{message}} in the template
+        },
+        "p3vPj2YKVNjlHRvQC" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", phone: "", message: "" });
+        },
+        (err) => {
+          console.error("FAILED...", err);
+          alert("Failed to send message. Please try again later.");
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
@@ -41,7 +57,7 @@ function Contact() {
         <div className="contact-map">
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31109.905982700425!2d80.20557148814749!3d13.082680371368795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264e053b64487%3A0x1bcadfbfb6c3e155!2sAminjikarai%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1698282444572!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31109.908057700425!2d80.2367553251481!3d13.0798743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52661ba09ff2e7%3A0x164456f0bb9fbbd5!2sNo%201%2F8%2C%20Annai%20Indira%20Gandhi%20Street%2C%20Kilpauk%20Garden%20Road%2C%20Chennai%20600010!5e0!3m2!1sen!2sin!4v1698282444572!5m2!1sen!2sin"
             width="100%"
             height="300"
             style={{ border: 0 }}
@@ -52,7 +68,8 @@ function Contact() {
         <div className="contact-form">
           <p>Contact Info:</p>
           <p>Email: tickfabricators100@gmail.com</p>
-          <p>Mobile No : +91 729994510</p>
+          <p>Mobile No: +91 729994510</p>
+          <p>Address: No: 1/8 Annai Indira Gandhi Street, Kilpauk Garden Road, Chennai 600010</p>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
@@ -87,8 +104,8 @@ function Contact() {
               onChange={handleChange}
               required
             ></textarea>
-            <button type="submit" className="submit-btn">
-              Contact Us
+            <button type="submit" className="submit-btn" disabled={isSending}>
+              {isSending ? "Sending..." : "Contact Us"}
             </button>
           </form>
         </div>

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import "./FloatingIcons.css";
 import { FaPhone, FaEnvelope, FaTimes } from "react-icons/fa";
+import emailjs from "emailjs-com";
 
 function FloatingIcons() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    description: "",
+  });
+  const [isSending, setIsSending] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
 
   const handleEmailClick = () => {
@@ -11,6 +18,44 @@ function FloatingIcons() {
 
   const handleCloseForm = () => {
     setShowEmailForm(false);
+    setFormData({ name: "", email: "", description: "" }); // Clear the form
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    emailjs
+      .send(
+        "service_xsf8adr", // Replace with your EmailJS Service ID
+        "template_xvmmrtj", // Replace with your EmailJS Template ID
+        {
+          name: formData.name, // Maps to {{name}} in the template
+          email: formData.email, // Maps to {{email}} in the template
+          description: formData.description, // Maps to {{description}} in the template
+        },
+        "p3vPj2YKVNjlHRvQC" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", description: "" });
+        },
+        (err) => {
+          console.error("FAILED...", err);
+          alert("Failed to send the message. Please try again later.");
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+        setShowEmailForm(false); // Close the form after sending
+      });
   };
 
   return (
@@ -36,21 +81,43 @@ function FloatingIcons() {
           <div className="form-header">
             <h3>Contact Us</h3>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Full Name</label>
-              <input type="text" id="name" placeholder="Full Name" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" placeholder="Email Address" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="form-group">
               <label htmlFor="description">Description</label>
-              <textarea id="description" placeholder="Description"></textarea>
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Description"
+                value={formData.description}
+                onChange={handleChange}
+              ></textarea>
             </div>
-            <button type="submit" className="submit-btn">
-              SEND
+            <button type="submit" className="submit-btn" disabled={isSending}>
+              {isSending ? "Sending..." : "SEND"}
             </button>
           </form>
         </div>
